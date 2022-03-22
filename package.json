@@ -1,0 +1,25 @@
+{
+  "name": "tobiasbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "node tests.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CheryX/tobiasBot.git"
+  },
+  "author": "CheryX",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/CheryX/tobiasBot/issues"
+  },
+  "homepage": "https://github.com/CheryX/tobiasBot#readme",
+  "dependencies": {
+    "canvas": "^2.9.1",
+    "colors": "^1.4.0",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0"
+  }
+}
