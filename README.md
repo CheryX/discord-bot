@@ -2,7 +2,7 @@
 
 # Docs
 ## Example text schema:
-```json
+```js
     [
         {
             text: 'GREEN',
