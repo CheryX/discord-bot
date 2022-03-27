@@ -1,6 +1,7 @@
 import Canvas from 'canvas'; 
 import textBox from './lib/textBox.mjs';
-import drawSkin from './lib/drawSkin.mjs';
+import skin from './lib/drawSkin.mjs';
+import minecraftColors from './lib/colors/minecraft.mjs';
 import fs from 'fs';
 
 // Register Minecraft Font
@@ -8,35 +9,43 @@ Canvas.registerFont('./assets/fonts/Minecraftia.otf', { family: 'Minecraft' })
 Canvas.registerFont('./assets/fonts/MinecraftiaBold.otf', { family: 'Minecraft' })
 
 // Create a new canvas
-const canvas = new Canvas.createCanvas(1920, 1080);
+const canvas = new Canvas.createCanvas(1000, 300);
 const ctx = canvas.getContext('2d');
 
-// Create background
-ctx.fillStyle = '#ffffff';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-// Create a rectangle
-ctx.fillStyle = '#000000';
-ctx.strokeRect(550, 50, 500, 100);
+// Create template from template.png
+const template = new Canvas.Image();
+template.src = fs.readFileSync('./assets/images/template.png');
+ctx.drawImage(template, 0, 0);
 
 // Create a new textbox
 let username = [
     {
-        text: 'THIS',
-        color: '#000000',
+        text: '[MVP',
+        color: minecraftColors.aqua,
+        shadow: {
+            x: 10, y: 10, blur: 0, color: minecraftColors.shadow.aqua,
+        }
     },
     {
-        text: ' IS ',
-        color: '#ff0000',
+        text: '+',
+        color: minecraftColors.yellow,
+        shadow: {
+            x: 10, y: 10, blur: 0, color: minecraftColors.shadow.yellow,
+        }
     },
     {
-        text: 'AMERICA',
-        color: '#0000ff',
+        text: '] electropirat.github.io',
+        color: minecraftColors.aqua,
+        shadow: {
+            x: 10, y: 10, blur: 0, color: minecraftColors.shadow.aqua,
+        }
     }
 ];
 
-new textBox(550, 50, 500, 100, username, 100, 'Minecraft').draw(ctx);
-ctx.drawImage(new drawSkin(32, 'CheryX'), 500, 500);
+new textBox(230, 80, 300, 70, username, 90, 'Minecraft').draw(ctx);
+
+
+ctx.drawImage(new skin(32, 'CheryX'), 500, 500);
 
 // Export the canvas to a file
 const out = fs.createWriteStream('./test.png');
