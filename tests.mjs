@@ -15,7 +15,7 @@ const ctx = canvas.getContext('2d');
 // Create template from template.png
 const template = new Canvas.Image();
 template.src = fs.readFileSync('./assets/images/template.png');
-ctx.drawImage(template, 0, 0);
+//ctx.drawImage(template, 0, 0);
 
 // Create a new textbox
 let username = [
@@ -34,7 +34,7 @@ let username = [
         }
     },
     {
-        text: '] electropirat.github.io',
+        text: '] were no strangers',
         color: minecraftColors.aqua,
         shadow: {
             x: 10, y: 10, blur: 0, color: minecraftColors.shadow.aqua,
@@ -44,8 +44,8 @@ let username = [
 
 new textBox(230, 80, 300, 70, username, 90, 'Minecraft').draw(ctx);
 
-
-ctx.drawImage(new skin(32, 'CheryX'), 500, 500);
+let technoSkin = await skin(16, 'Technoblade');
+await ctx.drawImage(technoSkin, 121, 76);
 
 // Export the canvas to a file
 const out = fs.createWriteStream('./test.png');
