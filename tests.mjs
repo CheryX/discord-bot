@@ -1,7 +1,7 @@
 import Canvas from 'canvas'; 
 import textBox from './lib/textBox.mjs';
-import skin from './lib/drawSkin.mjs';
-import minecraftColors from './lib/colors/minecraft.mjs';
+import drawSkin from './lib/drawSkin.mjs';
+import { getNickname } from './lib/userProfile.mjs';
 import fs from 'fs';
 
 // Register Minecraft Font
@@ -15,37 +15,18 @@ const ctx = canvas.getContext('2d');
 // Create template from template.png
 const template = new Canvas.Image();
 template.src = fs.readFileSync('./assets/images/template.png');
-//ctx.drawImage(template, 0, 0);
+ctx.drawImage(template, 0, 0);
+
+// Set up nickname
+let username = 'electruuu';
+let coloredUsername = await getNickname(username);
 
 // Create a new textbox
-let username = [
-    {
-        text: '[MVP',
-        color: minecraftColors.aqua,
-        shadow: {
-            x: 10, y: 10, blur: 0, color: minecraftColors.shadow.aqua,
-        }
-    },
-    {
-        text: '+',
-        color: minecraftColors.yellow,
-        shadow: {
-            x: 10, y: 10, blur: 0, color: minecraftColors.shadow.yellow,
-        }
-    },
-    {
-        text: '] were no strangers',
-        color: minecraftColors.aqua,
-        shadow: {
-            x: 10, y: 10, blur: 0, color: minecraftColors.shadow.aqua,
-        }
-    }
-];
+new textBox(240, 85, 300, 60, coloredUsername, 90, 'Minecraft').draw(ctx);
 
-new textBox(230, 80, 300, 70, username, 90, 'Minecraft').draw(ctx);
-
-let technoSkin = await skin(16, 'Technoblade');
-await ctx.drawImage(technoSkin, 121, 76);
+// Test drawSkin
+let technoSkin = await drawSkin(8, username);
+await ctx.drawImage(technoSkin, 74, 77);
 
 // Export the canvas to a file
 const out = fs.createWriteStream('./test.png');
