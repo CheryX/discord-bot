@@ -91,12 +91,13 @@ width | Width of the textbox | 100 | number | true
 height | Height of the textbox | 100 | number | true
 text | Text to be displayed | Hello world | textSchema | true
 maxFont | Max font size of the text | 100 | number | true
-font | Font of the text | Arial | string | true
+fontName | Font of the text | Arial | string | true
+align | Align of the text | center | string | true
 
 ### Example usage of textbox
 
 ```js
-new textBox(240, 85, 300, 60, text, 90, 'Arial')
+new textBox(240, 85, 300, 60, text, 90, 'Arial', 'top')
     .draw(ctx);
 ```
 
@@ -110,3 +111,11 @@ nickname | Minecraft nickname | Notch | string | true
 size | Size of the skin | 100 | number | true
 
 > The size is defined because of confusing ratio $1:\frac{2\sqrt{3}}{3}$
+
+### Example usage of renderSkin
+
+```js
+// await because of the API call
+let mcSkin = await drawSkin(8, username);
+await ctx.drawImage(mcSkin, 75, 77);
+```
