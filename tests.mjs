@@ -26,11 +26,6 @@ let coloredUsername = await getNickname(username);
 // Create a new textbox
 new textBox(238, 100, 280, 40, coloredUsername, 90, 'Minecraft', 'center').draw(ctx);
 
-// Draw outline
-ctx.strokeStyle = '#000000';
-ctx.lineWidth = 2;
-ctx.strokeRect(238, 100, 280, 40);
-
 // Test drawSkin
 let mcSkin = await drawSkin(8, username);
 await ctx.drawImage(mcSkin, 75, 77);
