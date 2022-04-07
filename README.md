@@ -1,7 +1,7 @@
 
 <div align="center">
     <br>
-    <h2><b>WARNING:</b> This project is far from complete, you can always contribute!</h2>
+    <h3><b>WARNING:</b> This project is far from complete, you can always contribute!</h3>
     <br>
     <img src="https://tobiasbot.ovh/images/logo.svg">
     <br>
@@ -36,7 +36,7 @@ An open-source version of the [tobiasBot](https://github.com/CheryX/tobiasBot) w
 
 ## Text schema
 
-There is a custom text schema for the bot, its is made of multiple JSON object. The JSON object accepts the following values:
+There is a custom text schema for the bot, its is made of multiple JSON objects. These objects accepts the following values:
 
 name | description | example | type | required
 --- | --- | --- | --- | ---

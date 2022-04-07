@@ -1,3 +1,5 @@
+// Some sort of unit tests
+
 import Canvas from 'canvas'; 
 import textBox from './lib/textBox.mjs';
 import drawSkin from './lib/drawSkin.mjs';
@@ -18,15 +20,15 @@ template.src = fs.readFileSync('./assets/images/template.png');
 ctx.drawImage(template, 0, 0);
 
 // Set up nickname
-let username = 'electruuu';
+let username = 'gdcolon';
 let coloredUsername = await getNickname(username);
 
 // Create a new textbox
-new textBox(240, 85, 300, 60, coloredUsername, 90, 'Minecraft').draw(ctx);
+new textBox(238, 100, 280, 40, coloredUsername, 90, 'Minecraft', 'center').draw(ctx);
 
 // Test drawSkin
-let technoSkin = await drawSkin(8, username);
-await ctx.drawImage(technoSkin, 74, 77);
+let mcSkin = await drawSkin(8, username);
+await ctx.drawImage(mcSkin, 74, 77);
 
 // Export the canvas to a file
 const out = fs.createWriteStream('./test.png');
