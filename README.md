@@ -1,7 +1,7 @@
 
 <div align="center">
     <br>
-    <h3><b>WARNING:</b> This project is far from complete, you can always contribute!</h3>
+    <h3><b>WARNING:</b> This project is far from complete, but you can always contribute!</h3>
     <br>
     <img src="https://tobiasbot.ovh/images/logo.svg">
     <br>
@@ -15,7 +15,9 @@
     <br>
 </div>
 
-An open-source version of the [tobiasBot](https://github.com/CheryX/tobiasBot) written in [Node.js](https://nodejs.org/en/about/) using [discord.js](https://github.com/discordjs/discord.js/) and [node-canvas](https://github.com/Automattic/node-canvas)
+An open-source version of the [tobiasBot](https://github.com/CheryX/tobiasBot) written in [Node.js](https://nodejs.org/en/about/) using [discord.js](https://github.com/discordjs/discord.js/) and [node-canvas](https://github.com/Automattic/node-canvas). You can always contribute to this project by opening an issue or creating a pull request.
+
+If you find some of the code useful, feel free to use it in your code! *idk you can give me credit if you want*
 
 
 # Cloning
@@ -126,3 +128,27 @@ size | Size of the skin | 100 | number | true
 let mcSkin = await drawSkin(8, username);
 await ctx.drawImage(mcSkin, 75, 77);
 ```
+
+## Getting player data
+Avoid the pain and suffer of the Hypixel API and use this function instead:
+
+```js
+import profile from './lib/hypixel/playerData.mjs';
+
+let userProfile = await profile(username);
+console.log(userProfile)
+```
+> API key is required to use this function.
+
+This function returns a JSON object with the following values:
+- `name`: Minecraft nickname
+- `uuid`: UUID
+- `rank`: Rank info (tag, color, and plus color)
+- `xp`: Network XP
+- `level`: Network level
+- `achievementPoints`: Achievement points
+- `karma`: Karma
+- `guild`: Guild info (name, tag, and rank)
+- `status`: Status (online, mode, game)
+- `friends`: Friends (UUIDs)
+- `badges`: Custom tobiasBot badges **(TODO)**

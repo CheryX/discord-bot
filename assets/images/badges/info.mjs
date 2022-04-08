@@ -1,4 +1,4 @@
-{
+export default {
     "25kSubs": {
         "id": "25kSubs",
         "name": "YouTu",

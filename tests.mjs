@@ -44,7 +44,7 @@ let userProfile = await profile(username);
 console.log(userProfile)
 
 let xpFormatted = `${Math.floor(userProfile.level)} LVL (${(100*userProfile.level - 100*Math.floor(userProfile.level)).toFixed(2)}% XP)`;
-console.log(xpFormatted)
+//console.log(xpFormatted)
 
 // Export the canvas to a file
 const out = fs.createWriteStream('./test.png');
