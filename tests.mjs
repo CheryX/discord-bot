@@ -20,11 +20,20 @@ template.src = fs.readFileSync('./assets/images/template2.png');
 ctx.drawImage(template, 0, 0);
 
 // Set up nickname
-let username = 'gdcolon';
+let username = 'cheryx';
 let coloredUsername = await getNickname(username);
 
 // Create a new textbox
-new textBox(238, 100, 280, 40, coloredUsername, 90, 'Minecraft', 'center').draw(ctx);
+let x = 238
+let y = 95
+let width = 290
+let height = 42
+new textBox(x, y, width, height, coloredUsername, 90, 'Minecraft', ['bottom', 'left']).draw(ctx);
+
+// Draw outline
+ctx.strokeStyle = '#000000';
+ctx.lineWidth = 2;
+//ctx.strokeRect(x, y, width, height);
 
 // Test drawSkin
 let mcSkin = await drawSkin(8, username);

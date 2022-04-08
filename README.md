@@ -92,12 +92,19 @@ height | Height of the textbox | 100 | number | true
 text | Text to be displayed | Hello world | textSchema | true
 maxFont | Max font size of the text | 100 | number | true
 fontName | Font of the text | Arial | string | true
-align | Align of the text | center | string | true
+align | Align of the text | center | array | true
+
+### Align values
+
+1. Horizontal: `left`, `center` or `right`
+2. Vertical: `top`, `center` or `bottom`
+
+Example: `['top', 'center']`
 
 ### Example usage of textbox
 
 ```js
-new textBox(240, 85, 300, 60, text, 90, 'Arial', 'top')
+new textBox(240, 85, 300, 60, text, 90, 'Arial', ['left', 'middle'])
     .draw(ctx);
 ```
 
