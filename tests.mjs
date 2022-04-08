@@ -4,6 +4,7 @@ import Canvas from 'canvas';
 import textBox from './lib/textBox.mjs';
 import drawSkin from './lib/hypixel/drawSkin.mjs';
 import { getNickname } from './lib/hypixel/userProfile.mjs';
+import profile from './lib/hypixel/playerData.mjs';
 import fs from 'fs';
 
 // Register Minecraft Font
@@ -27,7 +28,7 @@ let coloredUsername = await getNickname(username);
 let x = 238
 let y = 95
 let width = 290
-let height = 42
+let height = 38
 new textBox(x, y, width, height, coloredUsername, 90, 'Minecraft', ['bottom', 'left']).draw(ctx);
 
 // Draw outline
@@ -38,6 +39,9 @@ ctx.lineWidth = 2;
 // Test drawSkin
 let mcSkin = await drawSkin(8, username);
 await ctx.drawImage(mcSkin, 75, 77);
+
+let userProfile = await profile(username);
+console.log(userProfile)
 
 // Export the canvas to a file
 const out = fs.createWriteStream('./test.png');
