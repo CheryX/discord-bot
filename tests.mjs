@@ -29,7 +29,8 @@ let x = 238
 let y = 95
 let width = 290
 let height = 38
-new textBox(x, y, width, height, coloredUsername, 90, 'Minecraft', ['bottom', 'left']).draw(ctx);
+console.log(coloredUsername)
+await new textBox(x, y, width, height, coloredUsername, 90, 'Minecraft', ['bottom', 'left']).draw(ctx);
 
 // Draw outline
 ctx.strokeStyle = '#000000';
