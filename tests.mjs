@@ -1,7 +1,10 @@
+// Some sort of unit tests
+
 import Canvas from 'canvas'; 
 import textBox from './lib/textBox.mjs';
-import drawSkin from './lib/drawSkin.mjs';
-import { getNickname } from './lib/userProfile.mjs';
+import drawSkin from './lib/hypixel/drawSkin.mjs';
+import { getNickname } from './lib/hypixel/userProfile.mjs';
+import profile from './lib/hypixel/playerData.mjs';
 import fs from 'fs';
 
 // Register Minecraft Font
@@ -14,19 +17,34 @@ const ctx = canvas.getContext('2d');
 
 // Create template from template.png
 const template = new Canvas.Image();
-template.src = fs.readFileSync('./assets/images/template.png');
+template.src = fs.readFileSync('./assets/images/template2.png');
 ctx.drawImage(template, 0, 0);
 
 // Set up nickname
-let username = 'electruuu';
+let username = 'cheryx';
 let coloredUsername = await getNickname(username);
 
 // Create a new textbox
-new textBox(240, 85, 300, 60, coloredUsername, 90, 'Minecraft').draw(ctx);
+let x = 238
+let y = 95
+let width = 290
+let height = 38
+new textBox(x, y, width, height, coloredUsername, 90, 'Minecraft', ['bottom', 'left']).draw(ctx);
+
+// Draw outline
+ctx.strokeStyle = '#000000';
+ctx.lineWidth = 2;
+//ctx.strokeRect(x, y, width, height);
 
 // Test drawSkin
-let technoSkin = await drawSkin(8, username);
-await ctx.drawImage(technoSkin, 74, 77);
+let mcSkin = await drawSkin(8, username);
+await ctx.drawImage(mcSkin, 75, 77);
+
+let userProfile = await profile(username);
+console.log(userProfile)
+
+let xpFormatted = `${Math.floor(userProfile.level)} LVL (${(100*userProfile.level - 100*Math.floor(userProfile.level)).toFixed(2)}% XP)`;
+//console.log(xpFormatted)
 
 // Export the canvas to a file
 const out = fs.createWriteStream('./test.png');
