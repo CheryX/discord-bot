@@ -2,8 +2,8 @@
 
 import Canvas from 'canvas'; 
 import textBox from './lib/textBox.mjs';
-import drawSkin from './lib/drawSkin.mjs';
-import { getNickname } from './lib/userProfile.mjs';
+import drawSkin from './lib/hypixel/drawSkin.mjs';
+import { getNickname } from './lib/hypixel/userProfile.mjs';
 import fs from 'fs';
 
 // Register Minecraft Font
