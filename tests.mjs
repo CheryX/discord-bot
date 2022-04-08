@@ -29,8 +29,8 @@ let x = 238
 let y = 95
 let width = 290
 let height = 38
-console.log(coloredUsername)
-await new textBox(x, y, width, height, coloredUsername, 90, 'Minecraft', ['bottom', 'left']).draw(ctx);
+
+//await new textBox(x, y, width, height, coloredUsername, 90, 'Minecraft', ['bottom', 'left']).draw(ctx);
 
 // Draw outline
 ctx.strokeStyle = '#000000';
@@ -38,13 +38,13 @@ ctx.lineWidth = 2;
 //ctx.strokeRect(x, y, width, height);
 
 // Test drawSkin
-let mcSkin = await drawSkin(8, username);
-await ctx.drawImage(mcSkin, 75, 77);
+//let mcSkin = await drawSkin(8, username);
+//await ctx.drawImage(mcSkin, 75, 77);
 
-let userProfile = await profile(username);
-console.log(userProfile)
+//let userProfile = await profile(username);
+//console.log(userProfile)
 
-let xpFormatted = `${Math.floor(userProfile.level)} LVL (${(100*userProfile.level - 100*Math.floor(userProfile.level)).toFixed(2)}% XP)`;
+//let xpFormatted = `${Math.floor(userProfile.level)} LVL (${(100*userProfile.level - 100*Math.floor(userProfile.level)).toFixed(2)}% XP)`;
 //console.log(xpFormatted)
 
 // Export the canvas to a file
