@@ -141,14 +141,43 @@ console.log(userProfile)
 > API key is required to use this function.
 
 This function returns a JSON object with the following values:
-- `name`: Minecraft nickname
-- `uuid`: UUID
-- `rank`: Rank info (tag, color, and plus color)
-- `xp`: Network XP
-- `level`: Network level
-- `achievementPoints`: Achievement points
-- `karma`: Karma
-- `guild`: Guild info (name, tag, and rank)
-- `status`: Status (online, mode, game)
-- `friends`: Friends (UUIDs)
-- `badges`: Custom tobiasBot badges **(TODO)**
+
+name | description | type
+--- | --- | ---
+name | Minecraft nickname | string
+uuid | UUID of the player | string
+rank | Rank of the player | object
+xp | XP of the player | number
+level | Level of the player | number
+achievementPoints | Achievement points of the player | number
+karma | Karma of the player | number
+guild | Guild of the player | object
+status | Online status of the player | object
+friends | Friends of the player | array
+badges | tobiasBot badges of the player | array
+
+### rankObject
+
+name | description | type
+--- | --- | ---
+rank | Rank of the player | string
+color | Color of the rank | string
+plussesColor | Color of the rank plusses | string / undefined
+
+### guildObject
+
+name | description | type
+--- | --- | ---
+name | Name of the guild | string / undefined
+tag | Tag of the guild | string / undefined
+tagColor | Color of the guild tag | string / undefined
+xp | XP of the guild | number / undefined
+
+### statusObject
+
+name | description | type
+--- | --- | ---
+online | Online status of the player | boolean
+mode | Gamemode of the player | string / undefined
+map | Map of the player's match | string / undefined
+game | Game of the player's match | string / undefined
