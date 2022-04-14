@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.mjs",
   "scripts": {
-    "test": "node tests.mjs"
+    "test": "node tests.mjs",
+    "start": "node index.mjs",
+    "slash": "node deploy-commands.mjs"
   },
   "repository": {
     "type": "git",
@@ -17,8 +19,11 @@
   },
   "homepage": "https://github.com/CheryX/tobiasBot#readme",
   "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
     "canvas": "^2.9.1",
     "colors": "^1.4.0",
+    "discord-api-types": "^0.31.1",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0"
   }

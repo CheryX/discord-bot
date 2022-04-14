@@ -30,12 +30,19 @@ client.once('ready', () => {
 
         ========================================================================================
     `);
-
-    // Just testing logging (temp)
-    log.success("CheryX used /ping");
-    log.info("Updated bot to v1.0.1 (Fixed The Button) ");
-    log.warn("CheryX used The Button");
     
+});
+
+// Testing / commands
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	const { commandName } = interaction;
+
+	if (commandName === 'ping') {
+		await interaction.reply('Pong!');
+        log.info(`${interaction.user.tag} used the ${commandName} command.`);
+	}
 });
 
 // Login to Discord
