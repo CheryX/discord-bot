@@ -7,9 +7,9 @@
     <br>
     <br>
     <p>
-        <a href="https://discord.gg/gHBzHTr6JD"><img src="https://img.shields.io/discord/740228240286679101?color=5865F2&logo=discord&logoColor=fff"></a>
-        <a href="https://github.com/CheryX/tobiasBot/actions/"><img src="https://github.com/CheryX/tobiasBot/actions/workflows/node.js.yml/badge.svg"/></a>
-        <a href="https://github.com/CheryX/tobiasBot/issues"><img src="https://img.shields.io/github/issues/CheryX/tobiasBot/open.svg"/></a>
+        <a href="https://nodejs.org/en"><img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"></a>
+        <a href="https://discord.gg/gHBzHTr6JD"><img src="https://img.shields.io/discord/740228240286679101?color=5865F2&logo=discord&logoColor=fff&style=for-the-badge"></a>
+        <a href="https://github.com/CheryX/tobiasBot/issues"><img src="https://img.shields.io/github/issues-raw/CheryX/tobiasBot?style=for-the-badge"/></a>
     </p>
     <br>
     <br>
