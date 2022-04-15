@@ -31,6 +31,7 @@ If you find some of the code useful, feel free to use it in your code! *idk you 
     TOKEN=your_token
     CLIENT_SECRET=your_client_secret (not used rn)
     API_KEY=your_hypixel_api_key 
+    CLIENT_ID=your_client_id
     ```
 3. Run the bot using `npm start`
 
