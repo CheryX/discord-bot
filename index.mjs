@@ -3,11 +3,25 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Import the modules
-import { Client, Intents }  from 'discord.js';
+import { Client, Intents, Collection }  from 'discord.js';
+import fs from 'fs';
 import log from './lib/logging.mjs';
 
 // Create a new client
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+
+// Set up commands
+client.commands = new Collection();
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.mjs'));
+
+// Command handler from https://discordjs.guide/creating-your-bot/command-handling.html
+for (const file of commandFiles) {
+    // Import the command using import
+    const command = await import(`./commands/${file}`);
+
+    // Set the command name to the command
+    client.commands.set(command.default.data.name, command.default);
+}
 
 //Display basic info on ready
 client.once('ready', () => {
@@ -26,23 +40,34 @@ client.once('ready', () => {
         ID: \u001b[31m${client.user.id}\u001b[39m
         Shards: \u001b[31m${client.ws.totalShards}\u001b[39m
     
-        Servers: \u001b[31m${client.guilds.cache.size}\u001b[39m | Users: \u001b[31m${client.users.cache.size}\u001b[39m | Messages: \u001b[31m${client.sweepers.intervals.messages}\u001b[39m
+        Servers: \u001b[31m${client.guilds.cache.size}\u001b[39m | Users: \u001b[31m${client.users.cache.size}\u001b[39m | Channels: \u001b[31m${client.channels.cache.size}\u001b[39m
 
         ========================================================================================
     `);
-    
+
 });
 
-// Testing / commands
+// On Slash Command
 client.on('interactionCreate', async interaction => {
+
+    // [DEBUG] Log commands
+    log.debug(`${interaction.user.tag} used command ${interaction}`);
+
+    // If the interaction is a Slash Command
 	if (!interaction.isCommand()) return;
 
-	const { commandName } = interaction;
+    // Get the command name
+	const command = client.commands.get(interaction.commandName);
+	if (!command) return;
 
-	if (commandName === 'ping') {
-		await interaction.reply('Pong!');
-        log.info(`${interaction.user.tag} used the ${commandName} command.`);
+    // Execute the command
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		log.error(error);
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
+
 });
 
 // Login to Discord
