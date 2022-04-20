@@ -6,13 +6,13 @@ dotenv.config();
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
-import log from './lib/logging.mjs';
+import log from './lib/logging.js';
 import fs from 'fs';
 
 const guildId = '740228240286679101';
 
 const commands = [];
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.mjs'));
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
 

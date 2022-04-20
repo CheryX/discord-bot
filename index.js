@@ -5,14 +5,14 @@ dotenv.config();
 // Import the modules
 import { Client, Intents, Collection }  from 'discord.js';
 import fs from 'fs';
-import log from './lib/logging.mjs';
+import log from './lib/logging.js';
 
 // Create a new client
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 // Set up commands
 client.commands = new Collection();
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.mjs'));
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 // Command handler from https://discordjs.guide/creating-your-bot/command-handling.html
 for (const file of commandFiles) {
@@ -59,7 +59,6 @@ client.on('interactionCreate', async interaction => {
     // Get the command name
 	const command = client.commands.get(interaction.commandName);
 	if (!command) return;
-
     // Execute the command
 	try {
 		await command.execute(interaction);

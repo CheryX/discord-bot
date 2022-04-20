@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-import generateBadge from '../lib/generator/badge.mjs';
-import getArgs from '../lib/getArgs.mjs';
+import generateBadge from '../lib/generator/badge.js';
+import getArgs from '../lib/getArgs.js';
 import fetch from 'node-fetch';
 
 const data = new SlashCommandBuilder()
@@ -28,7 +28,7 @@ const data = new SlashCommandBuilder()
 export default {
 	data,
 	async execute(interaction) {
-		
+
 		// Defer reply
 		await interaction.deferReply();
 		const args = getArgs(interaction);
