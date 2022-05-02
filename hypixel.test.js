@@ -18,3 +18,4 @@ it('Profle is sucessfully fetching', async () => {
     expect(profile.guild.tagColor).toBe('gold');
 
 });
+

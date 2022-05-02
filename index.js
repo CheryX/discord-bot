@@ -4,6 +4,7 @@ dotenv.config();
 import { Client, Intents, Collection }  from 'discord.js';
 import fs from 'fs';
 import log from './lib/logging.js';
+import startExpress from './web/index.js';
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
@@ -32,6 +33,8 @@ client.once('ready', () => {
 
 		========================================================================================
 	`.replaceAll('	', '')); // Just a fancy console.log
+
+	startExpress();
 
 });
 
