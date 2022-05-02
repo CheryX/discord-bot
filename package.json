@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node tests.js",
+    "test": "jest",
+    "s": "node tests.js",
     "start": "node index.js",
     "slash": "node deploy-commands.js"
   },
@@ -28,5 +29,9 @@
     "discord-api-types": "^0.31.1",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "jest": "^27.5.1"
   }
 }
