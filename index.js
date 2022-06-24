@@ -1,11 +1,13 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 import { Client, Intents, Collection }  from 'discord.js';
 import fs from 'fs';
-import log from './lib/logging.js';
 import startExpress from './web/index.js';
 
+import log4js from "log4js"
+const logger = log4js.getLogger();
+
+logger.level = "info";
+
+import config from './config.js';
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.commands = new Collection();
@@ -19,21 +21,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
 
-	console.log(`
-		\u001b[31m:::    ::: :::   ::: \u001b[39m::::::::::: ::::::::  ::::::::: :::::::::::     :::      :::::::: ™ 
-		\u001b[31m:+:    :+: :+:   :+: \u001b[39m    :+:    :+:    :+: :+:    :+:    :+:       :+: :+:   :+:    :+: 
-		\u001b[31m+:+    +:+  +:+ +:+  \u001b[39m    +:+    +:+    +:+ +:+    +:+    +:+      +:+   +:+  +:+        
-		\u001b[31m+#++:++#++   +#++:   \u001b[39m    +#+    +#+    +:+ +#++:++#+     +#+     +#++:++#++: +#++:++#++ 
-		\u001b[31m+#+    +#+    +#+    \u001b[39m    +#+    +#+    +#+ +#+    +#+    +#+     +#+     +#+        +#+ 
-		\u001b[31m#+#    #+#    #+#    \u001b[39m    #+#    #+#    #+# #+#    #+#    #+#     #+#     #+# #+#    #+# 
-		\u001b[31m###    ###    ###    \u001b[39m    ###     ########  ######### ########### ###     ###  ######## 
-
-		Username: \u001b[31m${client.user.tag}\u001b[39m | ID: \u001b[31m${client.user.id}\u001b[39m
-		Servers: \u001b[31m${client.guilds.cache.size}\u001b[39m | Users: \u001b[31m${client.users.cache.size}\u001b[39m | Channels: \u001b[31m${client.channels.cache.size}\u001b[39m | Shards: \u001b[31m${client.ws.totalShards} \u001b[39m
-
-		========================================================================================
-	`.replaceAll('	', '')); // Just a fancy console.log
-
+	logger.info(`Logged in as  ${client.user.tag}`);
 	startExpress();
 
 });
@@ -41,7 +29,8 @@ client.once('ready', () => {
 client.on('interactionCreate', async interaction => {
 
 	// [DEBUG] Log commands
-	log.debug(`${interaction.user.tag} used command ${interaction}`);
+	logger.level = "debug";
+	logger.debug(`${interaction.user.tag} used command ${interaction}`);
 
 	if (!interaction.isCommand()) return;
 
@@ -51,15 +40,16 @@ client.on('interactionCreate', async interaction => {
 	try {
 		await command.execute(interaction);
 	} catch (error) {
-		log.error(error);
+		logger.error(error);
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 
 });
 
-client.login(process.env.TOKEN);
+client.login(config.token);
 
 // Catch errors to console, instead of crashing
 process.on('uncaughtException', function (err) {
-	log.error(err.message);
+	logger.level = "error";
+	logger.error(err.message);
 });

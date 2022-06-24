@@ -1,7 +1,4 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-import generateBadge from '../lib/generator/badge.js';
-import getArgs from '../lib/getArgs.js';
-import fetch from 'node-fetch';
 
 const data = new SlashCommandBuilder()
 	.setName('ping')

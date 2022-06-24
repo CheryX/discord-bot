@@ -1,14 +1,17 @@
-// Import tokens from .env
-import dotenv from 'dotenv';
-dotenv.config();
 
 // Import the modules
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
-import log from './lib/logging.js';
-import fs from 'fs';
+import fs from "fs";
+import config from './config.js';
 
+import log4js from "log4js"
+const logger = log4js.getLogger();
+
+logger.level = "info";
+
+// Test server id
 const guildId = '740228240286679101';
 
 const commands = [];
@@ -16,19 +19,17 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 
 for (const file of commandFiles) {
 
-	// Import the command using import
 	const command = await import(`./commands/${file}`);
-
-	// Set the command name to the command
 	commands.push(command.default.data.toJSON());
+
 }
 
 
-const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
+const rest = new REST({ version: '9' }).setToken(config.token);
 
 rest.put(
-	//Routes.applicationGuildCommands(process.env.CLIENT_ID, guildId), // Guild Commands
-	Routes.applicationCommands(process.env.CLIENT_ID), // Application Commands
+	//Routes.applicationGuildCommands(config.clientID, guildId), // Guild Commands
+	Routes.applicationCommands(config.clientID), // Application Commands
 	{ body: commands })
-	.then(() => log.success('Successfully registered application commands.'))
-	.catch((e) => log.error(e));
+	.then(() => logger.info('Successfully registered application commands.'))
+	.catch((e) => logger.error(e));

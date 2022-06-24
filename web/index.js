@@ -1,8 +1,12 @@
 import express from 'express';
-import log from '../lib/logging.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import fs from 'fs';
+
+import log4js from "log4js"
+const logger = log4js.getLogger();
+
+logger.level = "info";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,7 +27,7 @@ async function run() {
     }
 
     app.listen(PORT, () => {
-        log.info(`Website listening on ${URL}`) 
+        logger.info(`Website listening on ${URL}`) 
     });
 
 }

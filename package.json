@@ -1,38 +1,31 @@
 {
-  "name": "tobiasbot",
+  "name": "discord-bot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "s": "node tests.js",
     "start": "node index.js",
     "slash": "node deploy-commands.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CheryX/tobiasBot.git"
+    "url": "git+https://github.com/CheryX/bot-example.git"
   },
   "author": "CheryX",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/CheryX/tobiasBot/issues"
+    "url": "https://github.com/CheryX/bot-example/issues"
   },
-  "homepage": "https://github.com/CheryX/tobiasBot#readme",
+  "homepage": "https://github.com/CheryX/bot-example#readme",
   "type": "module",
   "dependencies": {
     "@discordjs/builders": "^0.12.0",
     "@discordjs/rest": "^0.3.0",
-    "canvas": "^2.9.1",
-    "cherry-box": "^1.1.0",
     "colors": "^1.4.0",
     "discord-api-types": "^0.31.1",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
-    "express": "^4.18.1"
-  },
-  "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
-    "jest": "^27.5.1"
+    "express": "^4.18.1",
+    "log4js": "^6.5.2"
   }
 }
